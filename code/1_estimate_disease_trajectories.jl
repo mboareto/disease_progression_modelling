@@ -9,13 +9,13 @@ using Turing, ReverseDiff, Distributions, DataFrames, CSV
 # ------------------------------ loading specific functions -------------------------------------------------------
 
 # non-linear temporal progression transformed to linear temporal progression
-logistic_to_linear(x::Float64, l::Float64, u::Float64) = -log((u - l) / (x - l) - 1.0)
+logistic_to_linear(x, l, u) = -log((u - l) / (x - l) - 1.0)
 
 # linear temporal progression transformed to non-linear temporal progression
-linear_to_logistic(y::Float64, l::Float64, u::Float64) = l + (u - l) / (exp.(-y) + 1.0)
+linear_to_logistic(y, l, u) = l + (u - l) / (exp.(-y) + 1.0)
 
 # Define the f_score function to model disease progression in a linear space
-function f_score(x0::Float64, r_i::Float64, t::Float64, l::Float64, u::Float64)
+function f_score(x0, r_i, t, l, u)
     y0 = logistic_to_linear(x0, l, u)    # Covert from non-linear temporal progression transformed to linear temporal progression
     y = y0 + r_i * t                     # Linear progression over time
     return linear_to_logistic(y, l, u)   # Convert back to non-linear temporal progression
@@ -23,8 +23,7 @@ end
 
 
 # Define the Turing model for estimating disease trajectories
-@model function estimate_disease_trajectories(x::Vector{Float64}, x0::Vector{Float64}, t::Vector{Float64}, id::Vector{Int64},
-    xmin::Float64, xmax::Float64)
+@model function estimate_disease_trajectories(x, x0, t, id, xmin, xmax)
 
     # Precompute parameters
     n = length(unique(id))  # Number of unique individuals
@@ -62,7 +61,7 @@ for model in ["linear", "exponential", "logistic"]
     x  = data[data.model.==model, :x ]
     t  = data[data.model.==model, :t ]
     x0 = data[data.model.==model, :x0]
-    id = data[data.model.==model, :id]
+    id = data[data.model.==model, :id] # note that id should be Vector{Int64}
 
     # Estimate the lower and upper bound (parameters of disease trajectory model) using the Turing model
     xmin, xmax = extrema(x)

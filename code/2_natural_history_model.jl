@@ -37,7 +37,7 @@ function compute_betas(chn, n_cov)
 end
 
 # Define the Turing model for estimating natural history
-@model function model_natural_history(δy::Vector{Float64}, t::Vector{Float64}, id::Vector{Int64}, Z::Matrix{Float64})
+@model function model_natural_history(δy, t, id, Z)
     # Precompute parameters
     N = size(Z, 1)       # Number of individuals
     J = size(Z, 2)       # Number of covariates
@@ -77,7 +77,7 @@ data = CSV.read("./simulated_data/2_simulated_data.csv", DataFrame)
 # model input
 δy = data[:, :δy]
 t  = data[:, :t ]
-id = data[:, :id]
+id = data[:, :id]  # note that id should be Vector{Int64}
 
 # loading covariate matrix
 Z = Array(CSV.read("./simulated_data/2_simulated_covariatematrix.csv", DataFrame))
@@ -96,7 +96,7 @@ chn = sample(m, NUTS(500, 0.65, adtype=AutoReverseDiff(false)), 200)
 #  -----------------------------------------------------------------------------------------------------------------------------
 
 # Comparing Horse-Shoe prior with Normal distribution
-@model function model_natural_history_normal(δy::Vector{Float64}, t::Vector{Float64}, id::Vector{Int64}, Z::Matrix{Float64})
+@model function model_natural_history_normal(δy, t, id, Z)
     # Precompute parameters
     N = size(Z, 1)       # Number of individuals
     J = size(Z, 2)       # Number of covariates

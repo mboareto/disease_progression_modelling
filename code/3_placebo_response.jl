@@ -37,7 +37,7 @@ function compute_betas(chn, n_cov)
 end
 
 # Define the Turing model for estimating natural history
-@model function model_natural_history(δy::Vector{Float64}, t::Vector{Float64}, id::Vector{Int64}, Z::Matrix{Float64})
+@model function model_natural_history(δy, t, id, Z)
     # Precompute parameters
     N = size(Z, 1)       # Number of individuals
     J = size(Z, 2)       # Number of covariates
@@ -70,10 +70,10 @@ end
 end
 
 
-exp_func(t::Float64; τ=0.05) = (1.0 - exp(-t / τ))
+exp_func(t; τ=0.05) = (1.0 - exp(-t / τ))
 
 # Define the Turing model for estimating placebo response
-@model function model_placebo_response(δy::Vector{Float64}, t::Vector{Float64}, id::Vector{Int64}, r_μ_i::Vector{Float64}, Ω_r::Float64, Z::Matrix{Float64})
+@model function model_placebo_response(δy, t, id, r_μ_i, Ω_r, Z)
 
     # Precompute parameters
     t_func = exp_func.(t)  # temporal dependency of placebo response (quick improvement)
@@ -118,7 +118,7 @@ data = CSV.read("./simulated_data/2_simulated_data.csv", DataFrame)
 # model input
 δy = data[:, :δy]
 t  = data[:, :t ]
-id = data[:, :id]
+id = data[:, :id]  # note that id should be Vector{Int64}
 
 # loading covariate matrix
 Z_r = Array(CSV.read("./simulated_data/2_simulated_covariatematrix.csv", DataFrame))
