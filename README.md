@@ -16,7 +16,7 @@ We found that this is a convenient approach that allows us to screen multiple po
 while keeping the model simple and dependent on only two parameters to be inferred. 
 
 The files [`code/1_generating_simulated_data.jl`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/1_generating_simulated_data.jl) is used to generate the simulated data
-[`code/1_simulated_data.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/1_simulated_data.csv). Three scenarios are simulated (linear, exponential, and logistic). 
+[`simulated_data/1_simulated_data.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/simulated_data/1_simulated_data.csv). Three scenarios are simulated (linear, exponential, and logistic). 
 The file [`code/1_estimate_disease_trajectories.jl`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/1_estimate_disease_trajectories.jl) is used to fit the model to the data. 
 
 
@@ -27,8 +27,8 @@ With a linear model, progression rate is described as a linear combination of pr
 
 
 The files [`code/2_generating_simulated_data.jl`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/2_generating_simulated_data.jl) is used to generate the simulated data
-[`code/2_simulated_data.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/2_simulated_data.csv) and simulated covariate matrix 
-[`code/2_simulated_covariatematrix.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/2_simulated_covariatematrix.csv). 
+[`simulated_data/2_simulated_data.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/simulated_data/2_simulated_data.csv) and simulated covariate matrix 
+[`simulated_data/2_simulated_covariatematrix.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/simulated_data/2_simulated_covariatematrix.csv). 
 The file [`code/2_natural_history_model.jl`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/2_natural_history_model.jl) is used to fit the model to the data. 
 
 
@@ -36,7 +36,7 @@ The file [`code/2_natural_history_model.jl`](https://github.com/mboareto/disease
 Once the the parameters related to natural history progression are inferred, we used clinical trial data to infer placebo response. 
 
 The files [`code/3_generating_simulated_data.jl`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/3_generating_simulated_data.jl) is used to generate the simulated data
-[`code/3_simulated_data.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/3_simulated_data.csv) and simulated covariate matrix 
-[`code/3_simulated_covariatematrix.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/3_simulated_covariatematrix.csv). 
+[`simulated_data/3_simulated_data.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/simulated_data/3_simulated_data.csv) and simulated covariate matrix 
+[`simulated_data/3_simulated_covariatematrix.csv`](https://github.com/mboareto/disease_progression_modelling/blob/main/simulated_data/3_simulated_covariatematrix.csv). 
 The file [`code/3_placebo_response.jl`](https://github.com/mboareto/disease_progression_modelling/blob/main/code/3_placebo_response.jl) is used to fit the model to the data. 
 
