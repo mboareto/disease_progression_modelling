@@ -70,7 +70,7 @@ end
 end
 
 
-exp_func(t; τ=0.05) = (1.0 - exp(-t / τ))
+exp_func(t::Float64; τ=0.05) = (1.0 - exp(-t / τ))
 
 # Define the Turing model for estimating placebo response
 @model function model_placebo_response(δy::Vector{Float64}, t::Vector{Float64}, id::Vector{Int64}, r_μ_i::Vector{Float64}, Ω_r::Float64, Z::Matrix{Float64})

@@ -9,13 +9,13 @@ using Turing, ReverseDiff, Distributions, DataFrames, CSV
 # ------------------------------ loading specific functions -------------------------------------------------------
 
 # non-linear temporal progression transformed to linear temporal progression
-logistic_to_linear(x, l, u) = -log((u - l) / (x - l) - 1.0)
+logistic_to_linear(x::Float64, l::Float64, u::Float64) = -log((u - l) / (x - l) - 1.0)
 
 # linear temporal progression transformed to non-linear temporal progression
-linear_to_logistic(y, l, u) = l + (u - l) / (exp.(-y) + 1.0)
+linear_to_logistic(y::Float64, l::Float64, u::Float64) = l + (u - l) / (exp.(-y) + 1.0)
 
 # Define the f_score function to model disease progression in a linear space
-function f_score(x0, r_i, t, l, u)
+function f_score(x0::Float64, r_i::Float64, t::Float64, l::Float64, u::Float64)
     y0 = logistic_to_linear(x0, l, u)    # Covert from non-linear temporal progression transformed to linear temporal progression
     y = y0 + r_i * t                     # Linear progression over time
     return linear_to_logistic(y, l, u)   # Convert back to non-linear temporal progression

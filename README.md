@@ -7,7 +7,7 @@ The `Project.toml` and `Manifest.toml` files contain information about dependenc
 Documentation on how to start a Julia environment can be found [here](https://pkgdocs.julialang.org/v1/environments/#Using-someone-else's-project).
 
 
-## 1. Disease trajectories
+## 1. Estimating disease trajectories
 We begin by estimating the disease trajectories for each specific clinical score throughout the progression of the disease. 
 To achieve this, we employ a generalized logistic model, where the lower and upper bounds are parameters that are inferred from the available data for each score.
 We found that this is a convenient approach that allows us to screen multiple potential trajectories such as linear, exponential, logistic or a combination of them, 
