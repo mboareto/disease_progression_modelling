@@ -58,8 +58,8 @@ r = β0 .+ Z * β
 data = DataFrame(δy = δy, t = t, id = id)
 
 # saving longitudinal data
-# CSV.write("./simulated_data/2_simulated_data.csv", data)
+CSV.write("./simulated_data/2_simulated_data.csv", data)
 # saving covariate matrix data
-# CSV.write("./simulated_data/2_simulated_covariatematrix.csv", DataFrame(Z, :auto))
+CSV.write("./simulated_data/2_simulated_covariatematrix.csv", DataFrame(Z, :auto))
 
 ## -----------------------------------------------------------------------------------------------------------------------------
