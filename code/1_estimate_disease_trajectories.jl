@@ -73,9 +73,9 @@ for model in ["linear", "exponential", "logistic"]
     chn = sample(m, NUTS(500, 0.65, adtype=AutoReverseDiff(false)), 200) # run sampling 
 
     # save model output (inferred lower and upper parameters)
-    model_output = vcat(model_output, DataFrame(lower=mean(chn[:lower]), upper=mean(chn[:upper]), model=model))
+    global model_output = vcat(model_output, DataFrame(lower=mean(chn[:lower]), upper=mean(chn[:upper]), model=model))
 end
-model_output
+display(model_output)
 ## -----------------------------------------------------------------------------------------------------------------------------
 
 # Expected results

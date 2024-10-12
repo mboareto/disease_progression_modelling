@@ -23,10 +23,10 @@ idx = 1
 for i in 1:n_individuals
     x0_i = rand(0:20)           # Initial score for individual i ranging from 0 to 20
     for j in 1:n_timepoints[i]
-        id[idx] = i
-        x0[idx] = x0_i
-        t[ idx] = j
-        idx += 1
+        global id[idx] = i
+        global x0[idx] = x0_i
+        global t[ idx] = j
+        global idx += 1
     end
 end
 ## -----------------------------------------------------------------------------------------------------------------------------
@@ -51,12 +51,13 @@ for model in ["linear", "exponential", "logistic"]
     # Generate the observed scores
     x = x0 .+ r .* t .+ ϵ  
 
-    data = vcat(data, DataFrame(x=x, x0=x0, t=t, id=id, model=model))
+    global data = vcat(data, DataFrame(x=x, x0=x0, t=t, id=id, model=model))
 end
 
 # Display the first few rows of the DataFrame
-first(data, 5)
+display(first(data, 10))
 ## -----------------------------------------------------------------------------------------------------------------------------
 
+# saving as csv file
 CSV.write("./simulated_data/1_simulated_data.csv", data)
 ## -----------------------------------------------------------------------------------------------------------------------------

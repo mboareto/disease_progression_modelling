@@ -23,10 +23,10 @@ idx = 1
 for i in 1:n_individuals
     x0_i = rand(0:20)           # Initial score for individual i ranging from 0 to 20
     for j in 1:n_timepoints[i]
-        id[idx] = i
-        x0[idx] = x0_i
-        t[ idx] = j
-        idx += 1
+        global id[idx] = i
+        global x0[idx] = x0_i
+        global t[ idx] = j
+        global idx += 1
     end
 end
 ## -----------------------------------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ end
 n_covariates = length(β)
 Z = zeros(n_individuals, n_covariates)
 for j in 1:n_covariates
-    Z[:, j] = rand(Normal(), n_individuals)
+    global Z[:, j] = rand(Normal(), n_individuals)
 end
 
 # progression rate for each individual
@@ -56,6 +56,7 @@ r = β0 .+ Z * β
 
 # data into a DataFrame
 data = DataFrame(δy = δy, t = t, id = id)
+
 # saving longitudinal data
 CSV.write("./simulated_data/2_simulated_data.csv", data)
 # saving covariate matrix data
