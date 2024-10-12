@@ -141,4 +141,4 @@ RSS_HSR2D2 = sum((β_HSR2D2 .- β) .^ 2)
 RSS_normal = sum((β_normal .- β) .^ 2)
 
 # R2D2 HorseShoe prior leads to lower RSS as compared to normal distribution prior:
-display(RSS_R2D2 / RSS_normal)
+display(RSS_HSR2D2 / RSS_normal)

@@ -71,8 +71,8 @@ end
 # data into a DataFrame
 data = DataFrame(δy = δy, t = t, id = id)
 # saving longitudinal data
-CSV.write("./simulated_data/3_simulated_data.csv", data)
+# CSV.write("./simulated_data/3_simulated_data.csv", data)
 # saving covariate matrix data
-CSV.write("./simulated_data/3_simulated_covariatematrix.csv", DataFrame(Z_α, :auto))
+# CSV.write("./simulated_data/3_simulated_covariatematrix.csv", DataFrame(Z_α, :auto))
 
 ## -----------------------------------------------------------------------------------------------------------------------------
