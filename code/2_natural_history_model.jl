@@ -128,7 +128,7 @@ m = model_natural_history_normal(δy, t, id, Z)
 chn = sample(m, NUTS(500, 0.65, adtype=AutoReverseDiff(false)), 200)  
 
 # Estimate the weight of each covariate (β) in predicting progression rate. 
-β_normal = [mean(chn[Symbol("β[$i]")]) for i in 1:length(β)]
+β_normal = [mean(chn[Symbol("β[$i]")]) for i in 1:size(Z, 2)]
 
 
 ## -----------------------------------------------------------------------------------------------------------------------------
