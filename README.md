@@ -1,3 +1,5 @@
+based on Julia version 1.11. Download instructions at [julialang.org](https://julialang.org/downloads/)
+
 # Model Implementation
 
 Our modeling approach consists of three parts: 1) estimate the disease trajectory of each clinical score, 2) infer disease progression from natural history data, and 3) infer placebo response from clinical trial data. 
