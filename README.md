@@ -4,7 +4,7 @@ based on Julia version 1.11. Download instructions at [julialang.org](https://ju
 
 Our modeling approach consists of three parts: 1) estimate the disease trajectory of each clinical score, 2) infer disease progression from natural history data, and 3) infer placebo response from clinical trial data. 
 
-The model is implemented using the probabilistic programming language Turing.jl (_Julia 1.10.5_). 
+The model is implemented using the probabilistic programming language Turing.jl (_Julia 1.11.0_). 
 The `Project.toml` and `Manifest.toml` files contain information about dependencies, versions, package names, UUIDs, etc. 
 Documentation on how to start a Julia environment can be found [here](https://pkgdocs.julialang.org/v1/environments/#Using-someone-else's-project).
 
